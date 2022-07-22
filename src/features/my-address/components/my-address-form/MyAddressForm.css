@@ -1,0 +1,17 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 300px;
+}
+
+.field-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.danger {
+  color: red;
+  font-style: italic;
+  font-weight: 700;
+}

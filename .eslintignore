@@ -1,0 +1,12 @@
+# https://eslint.org/docs/user-guide/configuring#eslintignore
+
+node_modules
+
+public
+build
+.vscode
+
+package-lock.json
+yarn.lock
+
+README.md

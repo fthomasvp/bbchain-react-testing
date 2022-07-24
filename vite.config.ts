@@ -20,5 +20,6 @@ export default defineConfig({
         "src/utils/test-utils.tsx",
       ],
     },
+    reporters: ["junit"],
   },
 });

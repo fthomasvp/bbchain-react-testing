@@ -27,7 +27,6 @@ steps:
     inputs:
       codeCoverageTool: Cobertura
       summaryFileLocation: "${System.DefaultWorkingDirectory}/**/*coverage.xml"
-      reportDirectory: "${System.DefaultWorkingDirectory}/**/coverage"
 
   - script: npm run build
     displayName: Build App
@@ -36,3 +35,4 @@ steps:
     displayName: Publish App to Artifacts
     inputs:
       targetPath: dist
+      artifact: Build

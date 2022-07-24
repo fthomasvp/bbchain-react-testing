@@ -26,7 +26,7 @@ steps:
     displayName: Publish Coverage Report
     inputs:
       codeCoverageTool: Cobertura
-      summaryFileLocation: "${System.DefaultWorkingDirectory}/**/*coverage.xml"
+      summaryFileLocation: "$(Agent.TempDirectory)/**/*coverage.xml"
 
   - script: npm run build
     displayName: Build App

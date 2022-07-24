@@ -10,7 +10,7 @@ trigger:
       - docs/*
 
 variables:
-  - template: azure-pipelines/vars/global.yaml
+  - template: azure-pipelines/vars/global.yml
 
 stages:
   - stage: Audit_Tests
@@ -19,7 +19,7 @@ stages:
     pool:
       vmImage: "ubuntu-latest"
     jobs:
-      - template: azure-pipelines/jobs/tests.yaml
+      - template: azure-pipelines/jobs/tests.yml
 
   - stage: App
     dependsOn: [Audit_Tests]
@@ -27,4 +27,4 @@ stages:
     pool:
       vmImage: "ubuntu-latest"
     jobs:
-      - template: azure-pipelines/jobs/app.yaml
+      - template: azure-pipelines/jobs/app.yml

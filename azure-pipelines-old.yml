@@ -1,0 +1,30 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - main
+
+  paths:
+    exclude:
+      - README.md
+      - docs/*
+
+variables:
+  - template: azure-pipelines/vars/global.yml
+
+stages:
+  - stage: Audit_Tests
+    displayName: Audit and Tests App
+    condition: eq(variables.isPR, 'True')
+    pool:
+      vmImage: "ubuntu-latest"
+    jobs:
+      - template: azure-pipelines/jobs/tests.yml
+
+  - stage: App
+    dependsOn: [Audit_Tests]
+    condition: eq(variables.hasToBuild, 'True')
+    pool:
+      vmImage: "ubuntu-latest"
+    jobs:
+      - template: azure-pipelines/jobs/app.yml

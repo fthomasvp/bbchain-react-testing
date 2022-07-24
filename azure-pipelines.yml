@@ -1,30 +1,38 @@
 trigger:
-  batch: true
-  branches:
-    include:
-      - main
+  - main
 
-  paths:
-    exclude:
-      - README.md
-      - docs/*
+pool:
+  vmImage: ubuntu-latest
 
-variables:
-  - template: azure-pipelines/vars/global.yml
+  steps:
+    - task: NodeTool@0
+      displayName: Install Node >=16.x
+      inputs:
+        versionSpec: "16.x"
 
-stages:
-  - stage: Audit_Tests
-    displayName: Audit and Tests App
-    condition: eq(variables.isPR, 'True')
-    pool:
-      vmImage: "ubuntu-latest"
-    jobs:
-      - template: azure-pipelines/jobs/tests.yml
+    - script: npm audit --production --audit-level=critical
+      displayName: Audit (Production dependencies)
 
-  - stage: App
-    dependsOn: [Audit_Tests]
-    condition: eq(variables.hasToBuild, 'True')
-    pool:
-      vmImage: "ubuntu-latest"
-    jobs:
-      - template: azure-pipelines/jobs/app.yml
+    - script: npm ci
+      displayName: Install Dependencies
+
+    - script: npm run test
+      displayName: Run Unit Tests
+
+    - script: npm run coverage
+      displayName: Generate Coverage Report
+
+    - task: PublishCodeCoverageResults@1
+      displayName: Publish Coverage Report
+      inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: "${System.DefaultWorkingDirectory}/**/*coverage.xml"
+        reportDirectory: "${System.DefaultWorkingDirectory}/**/coverage"
+
+    - script: npm run build
+      displayName: Build App
+
+    - task: PublishPipelineArtifact@1
+      displayName: Publish App to Artifacts
+      inputs:
+        targetPath: dist

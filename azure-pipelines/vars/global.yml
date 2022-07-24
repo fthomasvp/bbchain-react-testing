@@ -1,0 +1,14 @@
+variables:
+  isDevelop: ${{ eq(variables['Build.SourceBranchName'], 'develop') }}
+  isRelease: ${{ eq(variables['Build.SourceBranchName'], 'release-candidate') }}
+  isMain: ${{ eq(variables['Build.SourceBranchName'], 'main') }}
+
+  branchToRun: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+  hasToBuild: ${{ or( eq(variables.isDevelop,'True'), eq(variables.isRelease,'True'), eq(variables.isMain,'True') ) }}
+
+  isTag: ${{ startsWith(variables['Build.SourceBranch'], 'refs/tags/v') }}
+  isFork: ${{ eq(variables['System.PullRequest.IsFork'], 'True') }}
+  isPR: ${{ eq(variables['Build.Reason'], 'PullRequest') }}
+  isScheduled: ${{ eq(variables['Build.Reason'], 'Schedule') }}
+  isTrustedCI: ${{ and( eq(variables.isFork,'False'), eq(variables.isPR,'False'), eq(variables.isScheduled,'False') ) }}
+  deployMain: ${{ and( eq(variables.isMain,'True'), eq(variables.isTrustedCI,'True') ) }}

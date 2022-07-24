@@ -1,0 +1,48 @@
+jobs:
+  - job: Audit
+    displayName: Audit Dependencies
+    steps:
+      - task: NodeTool@0
+        displayName: Install Node >=16.x
+        inputs:
+          versionSpec: "16.x"
+
+      - script: npm audit --production --audit-level=critical
+        displayName: Audit (Production dependencies)
+
+  - job: UnitTests
+    displayName: Unit Tests
+    dependsOn: [Audit]
+    steps:
+      - task: NodeTool@0
+        displayName: Install Node >=16.x
+        inputs:
+          versionSpec: "16.x"
+
+      - script: npm ci
+        displayName: Install Dependencies
+
+      - script: npm run test
+        displayName: Run Unit Tests
+
+  - job: CoverageReport
+    displayName: Coverage Report
+    dependsOn: [Audit]
+    steps:
+      - task: NodeTool@0
+        displayName: Install Node >=16.x
+        inputs:
+          versionSpec: "16.x"
+
+      - script: npm ci
+        displayName: Install Dependencies
+
+      - script: npm run coverage
+        displayName: Generate Coverage Report
+
+      - task: PublishCodeCoverageResults@1
+        displayName: Publish Coverage Report
+        inputs:
+          codeCoverageTool: Cobertura
+          summaryFileLocation: "${System.DefaultWorkingDirectory}/**/*coverage.xml"
+          reportDirectory: "${System.DefaultWorkingDirectory}/**/coverage"

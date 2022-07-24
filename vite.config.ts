@@ -12,7 +12,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "src/setupTests.ts",
     coverage: {
-      reporter: ["cobertura"],
+      reporter: ["text", "html", "cobertura"],
       exclude: [
         "src/setupTests.ts",
         "src/mocks/**",
@@ -20,6 +20,5 @@ export default defineConfig({
         "src/utils/test-utils.tsx",
       ],
     },
-    reporters: ["junit"],
   },
 });

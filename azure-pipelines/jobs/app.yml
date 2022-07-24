@@ -1,0 +1,19 @@
+jobs:
+  - job: BuildApp
+    displayName: Build App
+    steps:
+      - task: NodeTool@0
+        displayName: Install Node >=16.x
+        inputs:
+          versionSpec: "16.x"
+
+      - script: npm ci
+        displayName: Install Dependencies
+
+      - script: npm run build
+        displayName: Build App
+
+      - task: PublishPipelineArtifact@1
+        displayName: Publish App to Artifacts
+        inputs:
+          targetPath: dist

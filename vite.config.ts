@@ -11,6 +11,7 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: "src/setupTests.ts",
+    outputFile: "TEST-bbchain-react-testing.xml",
     coverage: {
       reporter: ["text", "html", "cobertura"],
       exclude: [

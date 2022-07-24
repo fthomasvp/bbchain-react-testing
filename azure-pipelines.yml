@@ -25,6 +25,11 @@ steps:
       codeCoverageTool: Cobertura
       summaryFileLocation: "$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
 
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: "JUnit"
+      testResultsFiles: "**/TEST-*.xml"
+
   - script: npm run test
     displayName: Run Unit Tests
 

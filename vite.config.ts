@@ -12,6 +12,8 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "src/setupTests.ts",
     outputFile: "TEST-bbchain-react-testing.xml",
+    reporters: ["junit"],
+
     coverage: {
       reporter: ["text", "html", "cobertura"],
       exclude: [
@@ -21,6 +23,5 @@ export default defineConfig({
         "src/utils/test-utils.tsx",
       ],
     },
-    reporters: ["junit"],
   },
 });

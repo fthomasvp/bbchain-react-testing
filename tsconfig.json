@@ -14,8 +14,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": ["vitest"]
   },
   "include": ["src"],
+  "exclude": ["src/*.test.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -16,11 +16,7 @@ export default defineConfig({
 
     coverage: {
       reporter: ["text", "html", "cobertura"],
-      exclude: [
-        "src/setupTests.ts",
-        "src/mocks",
-        "src/**/*.{test,spec}.tsx"
-      ],
+      exclude: ["src/setupTests.ts", "src/mocks", "src/**/*.{test,spec}.tsx"],
     },
   },
 });

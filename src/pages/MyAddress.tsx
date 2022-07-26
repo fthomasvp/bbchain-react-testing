@@ -7,7 +7,7 @@ const MyAddress = () => {
   const [myAddress, setMyAddress] = useState<Address | null>(null);
 
   return (
-    <section style={{ margin: 'auto 40px'  }}>
+    <section style={{ margin: "auto 40px" }}>
       <h1>My Address</h1>
 
       <section>
@@ -18,7 +18,7 @@ const MyAddress = () => {
         <MyAddressDetails myAddress={myAddress} />
       </section>
     </section>
-  )
-}
+  );
+};
 
 export default MyAddress;

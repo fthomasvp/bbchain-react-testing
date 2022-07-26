@@ -11,7 +11,7 @@ export const mockAddress = {
 };
 
 export const myAddressHandlers = [
-  rest.get('https://viacep.com.br/ws/:zipCode/json/', (_req, res, ctx) => {
+  rest.get("https://viacep.com.br/ws/:zipCode/json/", (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(mockAddress));
   }),
 ];

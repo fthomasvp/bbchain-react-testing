@@ -1,8 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import MyAddress from "../pages/MyAddress";
 import Subscribe from "../pages/Subscribe";
@@ -15,7 +11,7 @@ const AppRoutes = () => {
         <Route path="/my-address" element={<MyAddress />} />
       </Routes>
     </BrowserRouter>
-  )
-}
+  );
+};
 
 export default AppRoutes;

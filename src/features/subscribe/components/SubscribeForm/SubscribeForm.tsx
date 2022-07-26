@@ -7,14 +7,14 @@ const SubscribeForm = () => {
     age: 0,
     password: "",
   });
-  const [errorDescription, setErrorDescription] = useState("")
+  const [errorDescription, setErrorDescription] = useState("");
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
     }));
-  }
+  };
 
   const handleClick = (e: any) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const SubscribeForm = () => {
     if (!formData.password) {
       return setErrorDescription("Password is required!");
     }
-  }
+  };
 
   return (
     <form className="form-container">
@@ -70,9 +70,11 @@ const SubscribeForm = () => {
 
       {errorDescription && <p className="danger">{errorDescription}</p>}
 
-      <button type="submit" onClick={handleClick}>Submit</button>
+      <button type="submit" onClick={handleClick}>
+        Submit
+      </button>
     </form>
-  )
-}
+  );
+};
 
 export default SubscribeForm;

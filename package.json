@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "type": "module",
   "engines": {
-    "node": ">=16"
+    "node": ">=16",
+    "npm": ">=8",
+    "yarn": "!!! Please use NPM"
   },
   "scripts": {
     "dev": "vite --port=3000",

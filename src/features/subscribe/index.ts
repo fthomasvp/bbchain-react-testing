@@ -1,3 +1,1 @@
-import SubscribeForm from "./components/SubscribeForm/SubscribeForm";
-
-export { SubscribeForm };
+export { default as SubscribeForm } from "./components/SubscribeForm/SubscribeForm";

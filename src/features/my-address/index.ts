@@ -1,7 +1,4 @@
-import MyAddressForm from "./components/my-address-form/MyAddressForm";
-import MyAddressDetails from "./components/my-address-details/MyAddressDetails";
-import { getZipCodeService } from "./services";
-import type { Address } from "./types";
-
-export { MyAddressForm, MyAddressDetails, getZipCodeService };
-export type { Address };
+export { default as MyAddressForm } from "./components/my-address-form/MyAddressForm";
+export { default as MyAddressDetails } from "./components/my-address-details/MyAddressDetails";
+export * from "./services";
+export * from "./types";

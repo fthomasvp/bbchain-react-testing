@@ -12,9 +12,9 @@
     "dev": "vite --port=3000",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest run",
-    "test:dev": "vitest dev",
-    "coverage": "vitest run --coverage",
+    "test": "vitest dev",
+    "test:ci": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "cypress:open": "cypress open",
     "lint": "eslint \"**/*.{ts,tsx,js,jsx}\""
   },
